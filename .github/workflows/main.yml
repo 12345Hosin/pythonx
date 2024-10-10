@@ -15,12 +15,12 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.x'  # استبدل بالإصدار الذي تريده
+          python-version: '3.x'  # استخدم 3.x لأحدث إصدار من Python 3
 
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt  # إذا كان لديك متطلبات
+          pip install -r requirements.txt  # تثبيت المكتبات من requirements.txt
 
       - name: Run script
         run: |
-          python tweep.py  # استبدل باسم سكربتك
+          python tweep.py  # تشغيل سكربت بايثون الخاص بك
