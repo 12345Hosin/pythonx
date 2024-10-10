@@ -41,7 +41,7 @@ class HumanPsychologyAI:
             return "تمت طباعة جميع العبارات!"
 
 # مثال على الاستخدام:
-phrases_file_path = r'C:\Users\lio\Desktop\xempire\jml2.txt'  # مسار ملف الجمل
+phrases_file_path = r'jml2.txt'  # مسار ملف الجمل
 ai = HumanPsychologyAI(phrases_file_path)
 
 # توليد عبارة جديدة
