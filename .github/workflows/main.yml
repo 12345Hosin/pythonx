@@ -2,25 +2,25 @@ name: Run Python Script
 
 on:
   schedule:
-    - cron: '0 9,12,13,16,21 * * *'  # يعمل في الأوقات المحددة
-  workflow_dispatch:  # يمكنك تشغيله يدويًا أيضًا
+    - cron: '0 9,12,13,16,21 * * *'
+  workflow_dispatch:
 
 jobs:
   run-script:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3  # تحديث إلى v3
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4  # تحديث إلى v4
         with:
-          python-version: '3.x'  # استخدم 3.x لأحدث إصدار من Python 3
+          python-version: '3.x'
 
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt  # تثبيت المكتبات من requirements.txt
+          pip install -r requirements.txt
 
       - name: Run script
         run: |
-          python tweep.py  # تشغيل سكربت بايثون الخاص بك
+          python tweep.py
