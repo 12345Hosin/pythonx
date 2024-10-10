@@ -28,6 +28,7 @@ class HumanPsychologyAI:
     def save_current_index(self, index):
         with open(self.current_index_file, 'w') as file:
             file.write(str(index))
+        self.update_github_file(str(index))  # تحديث الملف على GitHub
 
     def update_github_file(self, content):
         url = f'https://api.github.com/repos/{self.repo}/contents/{self.current_index_file}'
@@ -62,5 +63,11 @@ ai = HumanPsychologyAI(phrases_file_path)
 # توليد عبارة جديدة
 attracting_phrase = ai.generate_attracting_phrase()
 
-# تحديث الملف في GitHub
-ai.update_github_file(str(ai.get_current_index()))
+api_key = "wYlnU4Tfh9ovNpbOX4IEcDUZk"
+apy_sec = "AfdYSuaMmCNc1jsEU7fX1Avp5Txc0ikfaNNIKfeG2KEWBQFvZa"
+beare = r"AAAAAAAAAAAAAAAAAAAAAGn1wAEAAAAAaubnNOFva2pC7hLM1OdN7T7Ap4k%3DmRV2HIlEOthLjwFepkhyfwJy8e5XNyKdW7gKpHo5zXTpu4kVYg"
+acc_token = "1842421470208700416-R5xgRjrv7R6yQM4d2Cu00Bo66OuY6R"
+acc_token_sec = "nJKdH6P3Qn3fQThjzsbVdQLHlFcHx0yEDCrY55r9SACu9"
+
+client = tp.Client(beare, api_key, apy_sec, acc_token, acc_token_sec)
+client.create_tweet(text=attracting_phrase + " : https://t.me/TAE_group")
