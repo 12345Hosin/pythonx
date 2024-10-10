@@ -1,0 +1,26 @@
+name: Run Python Script
+
+on:
+  schedule:
+    - cron: '0 9,12,13,16,21 * * *'  # يعمل في الأوقات المحددة
+  workflow_dispatch:  # يمكنك تشغيله يدويًا أيضًا
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'  # استبدل بالإصدار الذي تريده
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt  # إذا كان لديك متطلبات
+
+      - name: Run script
+        run: |
+          python tweep.py  # استبدل باسم سكربتك
