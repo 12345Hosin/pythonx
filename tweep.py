@@ -8,7 +8,7 @@ class HumanPsychologyAI:
         self.phrases = self.load_phrases(phrases_file)
         self.current_index_file = 'current_index.txt'  # ملف لتخزين الفهرس الحالي
         self.repo = '12345Hosin/pythonx'  # استبدل بـ اسم مستخدم GitHub واسم المستودع
-        self.token = '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'  # ضع توكن الوصول الخاص بك هنا
+        self.token = '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'  # ضع توكن الوصول الخاص بك هنا
 
     def load_phrases(self, phrases_file):
         if os.path.exists(phrases_file):
