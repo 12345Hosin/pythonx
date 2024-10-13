@@ -1,6 +1,5 @@
 import tweepy as tp
 import requests
-import base64
 
 class HumanPsychologyAI:
     def __init__(self):
@@ -24,21 +23,27 @@ class HumanPsychologyAI:
             self.current_index = 0
             return "تمت طباعة جميع العبارات!"
 
+# إعدادات تويتر
+api_key = "wYlnU4Tfh9ovNpbOX4IEcDUZk"
+apy_sec = "AfdYSuaMmCNc1jsEU7fX1Avp5Txc0ikfaNNIKfeG2KEWBQFvZa"
+bearer = r"AAAAAAAAAAAAAAAAAAAAAGn1wAEAAAAAaubnNOFva2pC7hLM1OdN7T7Ap4k%3DmRV2HIlEOthLjwFepkhyfwJy8e5XNyKdW7gKpHo5zXTpu4kVYg"
+acc_token = "1842421470208700416-R5xgRjrv7R6yQM4d2Cu00Bo66OuY6R"
+acc_token_sec = "nJKdH6P3Qn3fQThjzsbVdQLHlFcHx0yEDCrY55r9SACu9"
+
+client = tp.Client(bearer, api_key, apy_sec, acc_token, acc_token_sec)
+
 # مثال على الاستخدام:
 ai = HumanPsychologyAI()
 
-# توليد عبارة جديدة
-attracting_phrase = ai.generate_attracting_phrase()
+# حلقة لتوليد العبارات ونشرها
+while True:
+    attracting_phrase = ai.generate_attracting_phrase()
+    print(attracting_phrase)  # طباعة العبارة
 
-# نشر العبارة على تويتر
-if attracting_phrase != "تمت طباعة جميع العبارات!":
-    api_key = "wYlnU4Tfh9ovNpbOX4IEcDUZk"
-    apy_sec = "AfdYSuaMmCNc1jsEU7fX1Avp5Txc0ikfaNNIKfeG2KEWBQFvZa"
-    beare = r"AAAAAAAAAAAAAAAAAAAAAGn1wAEAAAAAaubnNOFva2pC7hLM1OdN7T7Ap4k%3DmRV2HIlEOthLjwFepkhyfwJy8e5XNyKdW7gKpHo5zXTpu4kVYg"
-    acc_token = "1842421470208700416-R5xgRjrv7R6yQM4d2Cu00Bo66OuY6R"
-    acc_token_sec = "nJKdH6P3Qn3fQThjzsbVdQLHlFcHx0yEDCrY55r9SACu9"
-
-    client = tp.Client(beare, api_key, apy_sec, acc_token, acc_token_sec)
-    client.create_tweet(text=attracting_phrase + " : https:/up")
-else:
-    print(attracting_phrase)
+    # نشر العبارة على تويتر
+    if attracting_phrase != "تمت طباعة جميع العبارات!":
+        client.create_tweet(text=attracting_phrase + " : https:/up")
+    
+    # كسر الحلقة عند الوصول إلى نهاية العبارات
+    if attracting_phrase == "تمت طباعة جميع العبارات!":
+        break
